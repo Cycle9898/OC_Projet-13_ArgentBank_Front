@@ -1,5 +1,10 @@
 //Color variables
 
+$main-color: #00bc77;
+$bg-color: #00bc77;
+
+$main-text-color: #2c3e50;
+$title-text-color: #222;
 
 //Breakpoints
 
@@ -9,3 +14,8 @@ $breakpoints: (
 );
 
 //Fonts
+
+$main-fonts : Avenir,
+Helvetica,
+Arial,
+sans-serif;

@@ -1,17 +1,18 @@
-import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
+import { createBrowserRouter,RouterProvider,Outlet,Navigate } from "react-router-dom";
+import Header from "./components/Header";
 
 //Layout component for SPA to add header and footer on all pages
 function Layout() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Outlet />
       {/* <Footer /> */}
     </>
   );
 }
 
-//Define all routes from Layout component
+//Define all routes
 const defineRoutes = createBrowserRouter([
   {
     element: <Layout />,
@@ -19,6 +20,22 @@ const defineRoutes = createBrowserRouter([
       {
         path: "/",
         element: ""
+      },
+      {
+        path: "/login",
+        element: ""
+      },
+      {
+        path: "/profile",
+        element: ""
+      },
+      {
+        path: "/error",
+        element: ""
+      },
+      {
+        path: "*",
+        element: <Navigate to="/error" replace />
       }
     ]
   }
