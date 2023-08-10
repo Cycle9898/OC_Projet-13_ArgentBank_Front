@@ -2,6 +2,7 @@ import { createBrowserRouter,RouterProvider,Outlet,Navigate } from "react-router
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 
 //Layout component for SPA to add header and footer on all pages
 function Layout() {
@@ -25,7 +26,7 @@ const defineRoutes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: ""
+        element: <LoginPage />
       },
       {
         path: "/profile",

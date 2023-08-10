@@ -1,0 +1,64 @@
+/* Login Page */
+
+.sign-in-content {
+    background-color: white;
+    width: 300px;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 2rem;
+
+    &__icon {
+        font-size: 5rem;
+    }
+
+    h1 {
+        margin: 0.67em 0;
+        font-size: 1.5em;
+    }
+
+    &__button {
+        width: 100%;
+        padding: 8px;
+        margin-top: 1rem;
+        border-color: $main-color;
+        background-color: $main-color;
+        color: #fff;
+        cursor: pointer;
+        @include font-set(1.1rem, bold);
+    }
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        padding: 5px;
+        font-size: 1.2rem;
+    }
+
+    .input-error {
+        color: red;
+        margin-top: 3px;
+        font-size: 0.8rem;
+    }
+}
+
+.input-remember {
+    display: flex;
+
+    label {
+        margin-left: 0.25rem;
+    }
+
+    input {
+        margin: 3px 3px 3px 4px;
+    }
+}
