@@ -1,0 +1,75 @@
+/* Error Page */
+
+.error-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-ring {
+    margin: 30px 10px;
+    border: 10px solid $main-color;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    aspect-ratio: 1 / 1;
+
+    h1 {
+        @include font-set(6rem, 700);
+        line-height: 6rem;
+        color: red;
+
+        @include for-device(tablet) {
+            font-size: 9rem;
+            line-height: 8rem;
+        }
+
+        @include for-device(desktop) {
+            font-size: 12rem;
+            line-height: 10rem;
+        }
+    }
+
+    h2 {
+        @include font-set(1.5rem, 500);
+
+        @include for-device(tablet) {
+            font-size: 2.25rem;
+        }
+
+        @include for-device(desktop) {
+            font-size: 3rem;
+        }
+    }
+
+    p {
+        max-width: 60%;
+        @include font-set(1rem, 500);
+
+        @include for-device(tablet) {
+            font-size: 1.5rem;
+        }
+
+        @include for-device(desktop) {
+            font-size: 2rem;
+        }
+    }
+
+    a {
+        @include font-set(0.8rem, 500);
+        color: $main-text-color;
+        display: block;
+        padding: 0.5rem;
+
+        @include for-device(tablet) {
+            font-size: 1.2rem;
+        }
+
+        @include for-device(desktop) {
+            font-size: 1.6rem;
+        }
+    }
+}
