@@ -1,0 +1,25 @@
+/* Bank Feature Component */
+
+.feature-item {
+    flex: 1;
+    padding: 2.5rem;
+
+    &__icon {
+        box-sizing: unset;
+        width: 100px;
+        border: 10px solid $main-color;
+        border-radius: 50%;
+        padding: 1rem;
+    }
+
+    &__title {
+        color: $title-text-color;
+        margin-top: 1em;
+        margin-bottom: 0.5rem;
+        @include font-set(1.25rem, bold);
+    }
+
+    &__text {
+        margin: 1em 0;
+    }
+}

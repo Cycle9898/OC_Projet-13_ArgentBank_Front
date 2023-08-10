@@ -1,7 +1,7 @@
 //Color variables
 
 $main-color: #00bc77;
-$bg-color: #00bc77;
+$bg-color: #12002b;
 
 $main-text-color: #2c3e50;
 $title-text-color: #222;
@@ -9,8 +9,8 @@ $title-text-color: #222;
 //Breakpoints
 
 $breakpoints: (
-    mobile: 767.9px,
-    tablet: 991.9px
+    tablet: 720px,
+    desktop: 920px
 );
 
 //Fonts

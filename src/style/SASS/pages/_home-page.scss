@@ -1,0 +1,10 @@
+/* Home Page */
+
+.features {
+    display: flex;
+    flex-direction: column;
+
+    @include for-device(desktop) {
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,51 @@
+/* Hero Banner Component */
+
+.hero {
+    background-image: url('./src/assets/image/bank-tree.jpeg');
+    background-position: 0 -50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    position: relative;
+
+    @include for-device(desktop) {
+        height: 400px;
+        background-position: 0% 33%;
+    }
+
+    &__content {
+        position: relative;
+        box-sizing: unset;
+        top: 2rem;
+        width: 200px;
+        background: white;
+        padding: 2rem;
+        text-align: left;
+        margin: 0 auto;
+
+        @include for-device(desktop) {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 300px;
+            margin: 2rem;
+        }
+
+        .subtitle {
+            @include font-set(1rem, bold);
+
+            @include for-device(desktop) {
+                font-size: 1.5rem;
+            }
+        }
+
+        .text {
+            margin-top: 1em;
+            font-size: 0.9rem;
+
+            @include for-device(desktop) {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
