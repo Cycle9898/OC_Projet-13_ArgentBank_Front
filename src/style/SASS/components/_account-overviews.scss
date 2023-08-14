@@ -1,0 +1,54 @@
+/* AccountOverviews component */
+
+.account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    background-color: #fff;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: column;
+    padding: 1.5rem;
+    text-align: left;
+    margin-bottom: 2rem;
+
+    @include for-device(tablet) {
+        flex-direction: row;
+    }
+
+    &__content {
+        width: 100%;
+        flex: 1;
+
+        &.cta {
+            @include for-device(tablet) {
+                flex: 0;
+            }
+        }
+
+        &__title {
+            padding: 0;
+            @include font-set(1rem, normal);
+        }
+
+        &__amount {
+            @include font-set(2.5rem, bold);
+        }
+
+        &__transaction-btn {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            @include font-set(1.1rem, bold);
+            margin-top: 1rem;
+            border-color: $main-color;
+            background-color: $main-color;
+            color: #fff;
+
+            @include for-device(tablet) {
+                width: 200px;
+            }
+        }
+    }
+}

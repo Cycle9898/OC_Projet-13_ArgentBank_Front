@@ -1,23 +1,13 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 
 function LoginPage() {
-    // Handle all input values and form control with useState Hook (local state) and some functions
+    // Handle all input values and form controls with useState Hooks (local state) and some functions
     const [emailInput,setEmailInput] = useState<string>("");
     const [isEmailValid,setEmailValid] = useState<boolean | null>(null);
     const [passwordInput,setPasswordInput] = useState<string>("");
     const [isRememberInput,setRememberInput] = useState<boolean>(false);
 
-    const handleEmailInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmailInput(event.target.value);
-
-        // Check if email is valid and store it value in local state
-        const checkEmailValid: boolean = /^[\w-.]+@([\w-]+\.)+[\w-]{2,6}$/.test(event.target.value);
-        if (event.target.value === "") {
-            setEmailValid(null);
-        } else {
-            setEmailValid(checkEmailValid);
-        }
-    };
+    const handleEmailInput = (event: React.ChangeEvent<HTMLInputElement>) => setEmailInput(event.target.value);
 
     const handlePasswordInput = (event: React.ChangeEvent<HTMLInputElement>) => setPasswordInput(event.target.value);
 
@@ -29,7 +19,18 @@ function LoginPage() {
         if (isEmailValid) {
             //TODO
         }
-    }
+    };
+
+    useEffect(() => {
+        // Check if the email is valid and update isEmailValid boolean according to the case
+        const checkEmailValid: boolean = /^[\w-.]+@([\w-]+\.)+[\w-]{2,6}$/.test(emailInput);
+
+        if (emailInput === "") {
+            setEmailValid(null);
+        } else {
+            setEmailValid(checkEmailValid);
+        }
+    },[emailInput]);
 
     return (
         <main className="bg-dark">

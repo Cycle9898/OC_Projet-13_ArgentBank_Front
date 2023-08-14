@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ErrorPage from "./pages/ErrorPage";
+import ProfilePage from "./pages/ProfilePage";
 
 //Layout component for SPA to add header and footer on all pages
 function Layout() {
@@ -31,7 +32,7 @@ const defineRoutes = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: ""
+        element: <ProfilePage />
       },
       {
         path: "/error",
