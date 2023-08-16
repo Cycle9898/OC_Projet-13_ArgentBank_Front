@@ -1,8 +1,8 @@
 import { useEffect,useState } from "react";
-import { useDispatch,useSelector,useStore } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authLoginService,StoreType } from "../redux/Auth/authentificationServices";
-import type { RootState } from "../redux/store";
+import { authLoginService } from "../redux/Auth/authentificationServices";
+import type { RootState,AppDispatch } from "../redux/store";
 import * as authentication from "../redux/Auth/authenticationSlice";
 import LoadingSpinner from "../components/LoadingSpinner";
 import handleRememberMe from "../utils/handleRememberMeFct";
@@ -24,8 +24,8 @@ function LoginPage() {
         event.preventDefault();
 
         if (isEmailValid && passwordInput !== "") {
-            // Try to authenticate the user
-            authLoginService(reduxStore,emailInput,passwordInput);
+            // Try to authenticate the user with a thunk
+            reduxDispatch(authLoginService(emailInput,passwordInput));
             // Save email if "Remember me" is checked
             handleRememberMe(isRememberInput,emailInput);
         } else {
@@ -33,9 +33,8 @@ function LoginPage() {
         }
     };
 
-    // Get Redux Store and State to handle auth
-    const reduxStore = useStore() as unknown as StoreType;
-    const reduxDispatch = useDispatch();
+    // Get Redux Dispatch and State parts to handle auth
+    const reduxDispatch: AppDispatch = useDispatch();
     const errorSelector: boolean = useSelector((state: RootState) => state.authentication.isError);
     const loadingSelector: boolean = useSelector((state: RootState) => state.authentication.isDataLoading);
     const connectedSelector: boolean = useSelector((state: RootState) => state.authentication.isConnected);

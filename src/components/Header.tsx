@@ -1,9 +1,9 @@
 import { Link,useLocation,useNavigate } from "react-router-dom";
 import argentBankLogo from "../assets/logo/argentBankLogo.png";
 import { useEffect } from "react";
-import { useSelector,useStore } from "react-redux";
-import type { RootState } from "../redux/store";
-import { authLogoutService,StoreType } from "../redux/Auth/authentificationServices";
+import { useDispatch,useSelector } from "react-redux";
+import type { RootState,AppDispatch } from "../redux/store";
+import { authLogoutService } from "../redux/Auth/authentificationServices";
 
 
 function Header() {
@@ -11,15 +11,15 @@ function Header() {
     const { pathname }: { pathname: string } = useLocation();
     const navigate = useNavigate();
 
-    // Get Redux Store and State to handle Logout
-    const reduxStore = useStore() as unknown as StoreType;
+    // Get Redux Dispatch and State part to handle Logout
+    const reduxDispatch: AppDispatch = useDispatch();
     const connectedSelector: boolean = useSelector((state: RootState) => state.authentication.isConnected);
 
     const handleLogout = () => {
         // Redirect to Home Page
         navigate("/");
-        // Disconnect user
-        authLogoutService(reduxStore);
+        // Disconnect current user with a thunk
+        reduxDispatch(authLogoutService);
     }
 
     useEffect(() => {
@@ -56,7 +56,7 @@ function Header() {
                         <div>
                             <Link className="main-nav__item" to="/profile">
                                 <span className="fa fa-user-circle"></span>
-                                <span> Todo</span>
+                                <span style={{ color: "red" }}> TODO fetch first name</span>
                             </Link>
 
                             <button

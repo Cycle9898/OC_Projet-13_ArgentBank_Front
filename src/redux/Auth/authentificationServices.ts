@@ -1,52 +1,49 @@
 import * as authentication from "./authenticationSlice";
-import type { RootState,AppDispatch } from "../store";
+import type { AppDispatch } from "../store";
 
-export type StoreType = {
-    state: RootState,
-    dispatch: AppDispatch
-}
+// Thunk Creator for try to sign in an user
+export function authLoginService(email: string,password: string) {
+    return async function (dispatch: AppDispatch) {
+        dispatch(authentication.setErrorStatut(false));
+        dispatch(authentication.setLoadingStatut(true));
 
-// Function that try to sign in an user
-export async function authLoginService(store: StoreType,email: string,password: string) {
-    store.dispatch(authentication.setErrorStatut(false));
-    store.dispatch(authentication.setLoadingStatut(true));
+        const apiURL: string = "http://localhost:3001/api/v1/user/login";
 
-    const apiURL: string = "http://localhost:3001/api/v1/user/login";
+        try {
+            // API call to authenticate user
+            const response = await fetch(apiURL,{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email,password })
+            });
 
-    try {
-        // API call to authenticate user
-        const response = await fetch(apiURL,{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email,password })
-        });
+            // Create sessionStorage item if user is authenticated
+            if (response.status === 200) {
+                const authToken = await response.json();
 
-        // Create sessionStorage item if user is authenticated
-        if (response.status === 200) {
-            const authToken = await response.json();
+                sessionStorage.setItem("ArgentBank_JWT",authToken.body.token);
+                dispatch(authentication.setAuthStatut(true));
+            } else {
+                dispatch(authentication.setErrorStatut(true));
+            }
+        }
 
-            sessionStorage.setItem("ArgentBank_JWT",authToken.body.token);
-            store.dispatch(authentication.setAuthStatut(true));
-        } else {
-            store.dispatch(authentication.setErrorStatut(true));
+        catch (error: unknown) {
+            dispatch(authentication.setErrorStatut(true));
+            console.log(error);
+        }
+
+        finally {
+            dispatch(authentication.setLoadingStatut(false));
         }
     }
-
-    catch (error: unknown) {
-        store.dispatch(authentication.setErrorStatut(true));
-        console.log(error);
-    }
-
-    finally {
-        store.dispatch(authentication.setLoadingStatut(false));
-    }
 }
 
-// Function that disconnect the current user
-export function authLogoutService(store: StoreType) {
+// Thunk for disconnect the current user
+export function authLogoutService(dispatch: AppDispatch) {
     // Remove JWT from sessionStorage and set isConnected from redux global State to false
     sessionStorage.removeItem("ArgentBank_JWT");
-    store.dispatch(authentication.setAuthStatut(false));
+    dispatch(authentication.setAuthStatut(false));
 }
