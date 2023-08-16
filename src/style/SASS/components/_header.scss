@@ -18,6 +18,14 @@
         &:hover {
             text-decoration: underline;
         }
+
+        &--btn {
+            cursor: pointer;
+            background: unset;
+            border: unset;
+            @include font-set(1rem, 700);
+            color: unset;
+        }
     }
 
     &__logo {
