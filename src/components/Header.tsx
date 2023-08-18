@@ -14,12 +14,13 @@ function Header() {
     // Get Redux Dispatch and State part to handle Logout
     const reduxDispatch: AppDispatch = useDispatch();
     const connectedSelector: boolean = useSelector((state: RootState) => state.authentication.isConnected);
+    const firstNameSelector: string = useSelector((state: RootState) => state.userInfos.data.firstName);
 
     const handleLogout = () => {
-        // Redirect to Home Page
-        navigate("/");
         // Disconnect current user with a thunk
         reduxDispatch(authLogoutService);
+        // Redirect to Home Page
+        navigate("/");
     }
 
     useEffect(() => {
@@ -56,7 +57,7 @@ function Header() {
                         <div>
                             <Link className="main-nav__item" to="/profile">
                                 <span className="fa fa-user-circle"></span>
-                                <span style={{ color: "red" }}> TODO fetch first name</span>
+                                <span> {firstNameSelector}</span>
                             </Link>
 
                             <button
