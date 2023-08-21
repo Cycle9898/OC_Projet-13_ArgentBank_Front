@@ -21,9 +21,9 @@ export function authLoginService(email: string,password: string) {
 
             // Create sessionStorage item if user is authenticated
             if (response.status === 200) {
-                const authToken = await response.json();
+                const fetchedAuthToken = await response.json();
 
-                sessionStorage.setItem("ArgentBank_JWT",authToken.body.token);
+                sessionStorage.setItem("ArgentBank_JWT",fetchedAuthToken.body.token);
                 dispatch(authentication.setAuthStatut(true));
             } else {
                 dispatch(authentication.setErrorStatut(true));

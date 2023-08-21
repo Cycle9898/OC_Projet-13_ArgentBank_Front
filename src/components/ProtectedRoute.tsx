@@ -5,7 +5,7 @@ import ProfilePage from "../pages/ProfilePage";
 
 // React component that check if user is connected to give access to Profile Page or not
 function ProtectedRoute() {
-    // Get Redux State part
+    // Get isConnected from authentication Redux State part
     const connectedSelector: boolean = useSelector((state: RootState) => state.authentication.isConnected);
 
     return (

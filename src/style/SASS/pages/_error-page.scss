@@ -17,7 +17,7 @@
     gap: 5%;
     aspect-ratio: 1 / 1;
 
-    h1 {
+    h2 {
         @include font-set(6rem, 700);
         line-height: 6rem;
         color: red;
@@ -33,7 +33,7 @@
         }
     }
 
-    h2 {
+    h3 {
         @include font-set(1.5rem, 500);
 
         @include for-device(tablet) {

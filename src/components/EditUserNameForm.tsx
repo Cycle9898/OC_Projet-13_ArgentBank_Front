@@ -37,7 +37,7 @@ function EditUserNameForm({ changeEditMode }: Props) {
 
     return (
         <div className="profile-header">
-            <h1>Welcome back</h1>
+            <h2>Welcome back</h2>
 
             <div className="edit-user-form">
                 <div className="edit-user-form__first-name">

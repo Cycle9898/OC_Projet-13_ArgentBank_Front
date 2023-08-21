@@ -18,7 +18,7 @@ function LoginPage() {
 
     const handlePasswordInput = (event: React.ChangeEvent<HTMLInputElement>) => setPasswordInput(event.target.value);
 
-    const handleRememberInput = () => setRememberInput((previousState) => !previousState);
+    const handleRememberInput = () => setRememberInput((previousState: boolean) => !previousState);
 
     const handleForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -66,7 +66,7 @@ function LoginPage() {
                 <main className="bg-dark">
                     <section className="sign-in-content">
                         <span className="fa fa-user-circle sign-in-content__icon"></span>
-                        <h1>Sign In</h1>
+                        <h2>Sign In</h2>
 
                         <form onSubmit={(event) => handleForm(event)}>
                             <div className="input-wrapper">

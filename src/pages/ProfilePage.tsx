@@ -44,7 +44,7 @@ function ProfilePage() {
                             <EditUserNameForm changeEditMode={changeEditMode} />
                         ) : (
                             <div className="profile-header">
-                                <h1>Welcome back<br />{`${firstNameSelector} ${lastNameSelector}!`}</h1>
+                                <h2>Welcome back<br />{`${firstNameSelector} ${lastNameSelector}!`}</h2>
                                 <button className="profile-header__edit-button"
                                     onClick={changeEditMode}
                                 >

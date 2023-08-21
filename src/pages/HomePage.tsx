@@ -13,6 +13,7 @@ type FeaturesData = {
 }
 
 function HomePage() {
+    // Static data that need to be displayed on Home Page
     const featuresData: FeaturesData[] = [
         {
             id: 1,
