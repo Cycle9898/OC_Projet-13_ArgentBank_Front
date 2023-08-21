@@ -1,12 +1,18 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import AccountOverview from "../components/AccountOverview";
 import { userAccounts } from "../data/mockedAccounts";
 import type { AppDispatch,RootState } from "../redux/store";
 import { useDispatch,useSelector } from "react-redux";
-import userInfosFetchService from "../redux/UserInfos/userInfosFetchService";
+import userInfosFetchOrUpdateService from "../redux/UserInfos/userInfosFetchService";
 import LoadingSpinner from "../components/LoadingSpinner";
+import EditUserNameForm from "../components/EditUserNameForm";
 
 function ProfilePage() {
+    // Local state to handle form display
+    const [isEditMode,setEditMode] = useState<boolean>(false);
+
+    const changeEditMode = () => setEditMode((previousState) => !previousState);
+
     // Get Redux Dispatch and State parts to handle fetching user infos
     const reduxDispatch: AppDispatch = useDispatch();
     const firstNameSelector: string = useSelector((state: RootState) => state.userInfos.data.firstName);
@@ -15,13 +21,14 @@ function ProfilePage() {
     const loadingSelector: boolean = useSelector((state: RootState) => state.userInfos.isDataLoading);
 
     useEffect(() => {
-        reduxDispatch(userInfosFetchService);
+        reduxDispatch(userInfosFetchOrUpdateService());
     },[reduxDispatch]);
 
     if (errorSelector) {
         return (
             <main>
-                <p className="error-msg">Due to an error, your data could not be loaded.<br />Please try again later.</p>
+                <p className="error-msg">Due to an error, your data could not be loaded.</p>
+                <p className="error-msg">Please try again later.</p>
             </main>
         );
     }
@@ -32,19 +39,30 @@ function ProfilePage() {
                 <LoadingSpinner />
             ) : (
                 <main className="bg-dark">
-                    <div className="profile-header">
-                        <h1>Welcome back<br />{`${firstNameSelector} ${lastNameSelector}!`}</h1>
-                        <button className="profile-header__edit-button">Edit Name</button>
-                    </div>
+                    {
+                        isEditMode ? (
+                            <EditUserNameForm changeEditMode={changeEditMode} />
+                        ) : (
+                            <div className="profile-header">
+                                <h1>Welcome back<br />{`${firstNameSelector} ${lastNameSelector}!`}</h1>
+                                <button className="profile-header__edit-button"
+                                    onClick={changeEditMode}
+                                >
+                                    Edit Name</button>
+                            </div >
+                        )
+                    }
 
                     <h2 className="sr-only">Accounts</h2>
 
-                    {userAccounts.map(account => <AccountOverview
-                        key={account.id}
-                        accountTitle={account.accountTitle}
-                        amount={account.amount}
-                        amountDescription={account.amountDescription} />)}
-                </main>
+                    {
+                        userAccounts.map(account => <AccountOverview
+                            key={account.id}
+                            accountTitle={account.accountTitle}
+                            amount={account.amount}
+                            amountDescription={account.amountDescription} />)
+                    }
+                </main >
             )
             }
         </>

@@ -20,6 +20,10 @@ const { actions,reducer } = createSlice({
         },
         setLoadingStatut: (draft,action) => {
             draft.isDataLoading = action.payload;
+        },
+        editUserName: (draft,action) => {
+            draft.data.firstName = action.payload.firstName;
+            draft.data.lastName = action.payload.lastName;
         }
     }
 });
@@ -28,6 +32,7 @@ export const {
     setData,
     setErrorStatut,
     setLoadingStatut,
+    editUserName
 } = actions;
 
 export default reducer;
