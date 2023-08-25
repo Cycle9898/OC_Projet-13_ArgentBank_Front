@@ -1,27 +1,55 @@
-# React + TypeScript + Vite
+# OpenClassroom project 13 : Argent Bank
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+This project represents a web application allowing customers to log in and manage their accounts and profile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It was bootstrapped with [Vite JS](https://vitejs.dev/) with [react](https://react.dev/) and [typescript](https://www.typescriptlang.org/).
 
-## Expanding the ESLint configuration
+The page was integrated from a [static site mockup](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Back/tree/main/designs).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Data is retrieved via an API. More infos on this API [here](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Back).
 
-- Configure the top-level `parserOptions` property like this:
+Data from 2 users is currently available through the API :
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Tony Stark
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- First Name: `Tony`
+- Last Name: `Stark`
+- Email: `tony@stark.com`
+- Password: `password123`
+
+### Steve Rogers
+
+- First Name: `Steve`,
+- Last Name: `Rogers`,
+- Email: `steve@rogers.com`,
+- Password: `password456`
+
+## Prerequisites
+
+- [Node.JS](https://nodejs.org/en)
+
+- [Yarn](https://yarnpkg.com/)
+
+- [MongoDB](https://www.mongodb.com/try/download/community)
+
+# Getting Started (Back-end)
+
+Follow [these instructions](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Back) to set up the back-end part.
+
+# Getting Started (Front-end)
+
+- Clone this repo : `git clone https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Front.git`
+
+- Inside the cloned folder, install all dependencies with : `yarn`
+
+- Then start the front-end part with : `yarn dev`
+
+This command runs the app in the development mode.
+
+Open http://localhost:5173 to view it in the browser.
+
+# V2 API documentation
+
+The documentation for v2 API, a swagger YAML file, is stored in [the swagger folder of the front-end repo](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Front/blob/main/swagger/).
