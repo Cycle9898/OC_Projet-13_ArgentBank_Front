@@ -1,7 +1,7 @@
 import type { AppDispatch,RootState } from "../redux/store";
 import { useDispatch,useSelector } from "react-redux";
 import { useState } from "react";
-import userInfosFetchOrUpdateService from "../redux/UserInfos/userInfosFetchService";
+import getOrUpdateUserInfos from "../redux/UserInfos/getOrUpdateUserInfosService";
 
 type Props = { changeEditMode: () => void };
 
@@ -17,7 +17,7 @@ function EditUserNameForm({ changeEditMode }: Props) {
             // Reset empty input(s) error message
             setInputsValid(false);
             // Update user's full name
-            reduxDispatch(userInfosFetchOrUpdateService(firstNameInput,lastNameInput));
+            reduxDispatch(getOrUpdateUserInfos(firstNameInput,lastNameInput));
             // Leave edit mode
             changeEditMode();
         } else {

@@ -3,7 +3,7 @@ import AccountOverview from "../components/AccountOverview";
 import { userAccounts } from "../data/mockedAccounts";
 import type { AppDispatch,RootState } from "../redux/store";
 import { useDispatch,useSelector } from "react-redux";
-import userInfosFetchOrUpdateService from "../redux/UserInfos/userInfosFetchService";
+import getOrUpdateUserInfos from "../redux/UserInfos/getOrUpdateUserInfosService";
 import LoadingSpinner from "../components/LoadingSpinner";
 import EditUserNameForm from "../components/EditUserNameForm";
 
@@ -21,7 +21,7 @@ function ProfilePage() {
     const loadingSelector: boolean = useSelector((state: RootState) => state.userInfos.isDataLoading);
 
     useEffect(() => {
-        reduxDispatch(userInfosFetchOrUpdateService());
+        reduxDispatch(getOrUpdateUserInfos());
     },[reduxDispatch]);
 
     if (errorSelector) {

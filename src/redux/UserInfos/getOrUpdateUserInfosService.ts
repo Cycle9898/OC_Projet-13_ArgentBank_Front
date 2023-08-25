@@ -1,8 +1,8 @@
 import type { AppGetState,AppDispatch } from "../store";
 import * as userInfos from "./userInfosSlice";
 
-// Thunk creator for fetch or update current user's data
-function userInfosFetchOrUpdateService(firstName?: string,lastName?: string) {
+// Thunk creator to get or update current user's data according to the given function parameters
+function getOrUpdateUserInfos(firstName?: string,lastName?: string) {
     return function (dispatch: AppDispatch,getState: AppGetState) {
         // Get isDataLoading from Redux State (userInfos part)
         const loadingStatus: boolean = getState().userInfos.isDataLoading;
@@ -18,10 +18,10 @@ function userInfosFetchOrUpdateService(firstName?: string,lastName?: string) {
                 try {
                     if (firstName && lastName) {
                         //// API call to update user's full name
-                        userInfosFetchPut(apiURL,authToken,firstName,lastName,dispatch);
+                        updateUserInfos(apiURL,authToken,firstName,lastName,dispatch);
                     } else {
-                        // API call to fetch user's data
-                        userInfosFetchPost(apiURL,authToken,dispatch);
+                        // API call to get user's data
+                        getUserInfos(apiURL,authToken,dispatch);
                     }
                 }
 
@@ -39,10 +39,10 @@ function userInfosFetchOrUpdateService(firstName?: string,lastName?: string) {
     };
 }
 
-export default userInfosFetchOrUpdateService;
+export default getOrUpdateUserInfos;
 
-//function to fetch user's data(call API with a POST method)
-async function userInfosFetchPost(apiURL: string,authToken: string,dispatch: AppDispatch) {
+//function to get user's data(call API with a POST method)
+async function getUserInfos(apiURL: string,authToken: string,dispatch: AppDispatch) {
     // API call to fetch user's data
     const response = await fetch(apiURL,{
         method: "POST",
@@ -61,7 +61,7 @@ async function userInfosFetchPost(apiURL: string,authToken: string,dispatch: App
 }
 
 //function to update user's data(call API with a PUT method)
-async function userInfosFetchPut(apiURL: string,authToken: string,firstName: string,lastName: string,dispatch: AppDispatch) {
+async function updateUserInfos(apiURL: string,authToken: string,firstName: string,lastName: string,dispatch: AppDispatch) {
     // API call to update user's full name
     const response = await fetch(apiURL,{
         method: "PUT",
