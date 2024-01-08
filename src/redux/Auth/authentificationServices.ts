@@ -7,7 +7,8 @@ export function authLoginService(email: string,password: string) {
         dispatch(authentication.setErrorStatut(false));
         dispatch(authentication.setLoadingStatut(true));
 
-        const apiURL: string = "http://localhost:3001/api/v1/user/login";
+        const apiURL: string = (import.meta.env.VITE_API_URI && `${import.meta.env.VITE_API_URI}/api/v1/user/login`)
+            || "http://localhost:3001/api/v1/user/login";
 
         try {
             // API call to authenticate user

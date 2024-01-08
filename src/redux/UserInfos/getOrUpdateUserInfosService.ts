@@ -11,7 +11,8 @@ function getOrUpdateUserInfos(firstName?: string,lastName?: string) {
             dispatch(userInfos.setErrorStatut(false));
             dispatch(userInfos.setLoadingStatut(true));
 
-            const apiURL: string = "http://localhost:3001/api/v1/user/profile";
+            const apiURL: string = (import.meta.env.VITE_API_URI && `${import.meta.env.VITE_API_URI}/api/v1/user/profile`)
+                || "http://localhost:3001/api/v1/user/profile";
             const authToken: string | null = sessionStorage.getItem("ArgentBank_JWT");
 
             if (authToken) {

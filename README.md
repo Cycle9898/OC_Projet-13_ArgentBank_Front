@@ -36,7 +36,12 @@ Data from 2 users is currently available through the API :
 
 # Getting Started (Back-end)
 
-Follow [these instructions](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Back) to set up the back-end part.
+**This step can be skipped because the back-end part is currently hosted on a cloud platform.**
+
+Otherwise, it is possible to test the complete app locally.
+
+To do so, delete the .env file provided in this repo (or edit/remove VITE_API_URL environment variable) and follow [these instructions](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Back) to set up the
+back-end part. 
 
 # Getting Started (Front-end)
 
