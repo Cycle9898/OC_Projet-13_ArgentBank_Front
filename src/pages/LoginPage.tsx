@@ -9,9 +9,9 @@ import handleRememberMe from "../utils/handleRememberMeFct";
 
 function LoginPage() {
     // Handle all input values and form controls with useState Hooks (local state) and some functions
-    const [emailInput,setEmailInput] = useState<string>(localStorage.getItem("ArgentBank_email") || "");
+    const [emailInput,setEmailInput] = useState<string>(localStorage.getItem("ArgentBank_email") || "tony@stark.com"); //for testing convenience, otherwise empty string
     const [isEmailValid,setEmailValid] = useState<boolean | null>(null);
-    const [passwordInput,setPasswordInput] = useState<string>("");
+    const [passwordInput,setPasswordInput] = useState<string>("password123"); //for testing convenience, otherwise empty string
     const [isRememberInput,setRememberInput] = useState<boolean>(!!localStorage.getItem("ArgentBank_email"));
 
     const handleEmailInput = (event: React.ChangeEvent<HTMLInputElement>) => setEmailInput(event.target.value);
