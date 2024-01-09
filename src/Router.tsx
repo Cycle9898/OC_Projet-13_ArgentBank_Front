@@ -48,7 +48,10 @@ const defineRoutes = createBrowserRouter([
       }
     ]
   }
-]);
+],
+  {
+    basename: "/OC_Projet-13_ArgentBank_Front/"
+  });
 
 function Router() {
   return (<RouterProvider router={defineRoutes} />);
