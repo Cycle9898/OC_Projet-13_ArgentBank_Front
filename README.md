@@ -12,6 +12,8 @@ It was bootstrapped with [Vite JS](https://vitejs.dev/), [react](https://react.d
 
 The page was integrated from a [static site mockup](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Back/tree/main/designs).
 
+Redux is used to store the global state of the application.
+
 Data is retrieved via an API. More infos on this API [here](https://github.com/Cycle9898/OC_Projet-13_ArgentBank_Back).
 
 Data from 2 users is currently available through the API :
